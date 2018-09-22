@@ -1,0 +1,49 @@
+<template>
+  <section class="content" v-show="status">
+    <ul @click="switchStatus()">
+      <li v-for="(item, index) in data" :key="index">
+        <span>{{item.label}}</span>
+        <input type="text" v-model="item.mark">
+      </li>
+    </ul>
+  </section>
+</template>
+<script lang="ts">
+import { Component, Vue, Prop, Emit } from 'vue-property-decorator'
+const userData: any = require('@/user.js').default
+
+@Component
+export default class UserLabel extends Vue {
+  @Prop() private status!: boolean
+  @Prop() private changeData!: any
+
+  private data: any = {}
+  private mounted() {
+    this.data = Object.assign({}, userData)
+    const { x, y, key, index, data } = this.changeData
+  }
+
+  @Emit()
+  private switchStatus() {
+    console.log('lll')
+  }
+}
+</script>
+<style lang="less" scoped>
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 20;
+  ul {
+    background: #fff;
+    overflow: auto;
+    height: 300px;
+    z-index: 30px;
+  }
+}
+</style>
+

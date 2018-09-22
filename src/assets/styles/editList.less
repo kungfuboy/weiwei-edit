@@ -1,0 +1,89 @@
+.content {
+  .edit-content {
+    flex: 3;
+    padding: 15px 50px 15px 15px;
+    color: #233;
+    background-color: @bgColor;
+    background-image: url('../texture.png');
+    border-right: 3px dashed #6a8372;
+    overflow: auto;
+    .edit-list {
+      h3 {
+        text-align: center;
+        cursor: pointer;
+      }
+      .req {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-bottom: 8px;
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          position: relative;
+          textarea {
+            color: #36563c;
+            margin: 6px 0 8px 0;
+            &:first-child {
+              min-width: 300px;
+            }
+          }
+          input {
+            color: #36563c;
+            height: 26px;
+            width: 200px;
+            margin-bottom: 5px;
+          }
+          .delete-icon {
+            height: 30px;
+            position: absolute;
+            right: -40px;
+            bottom: 2px;
+          }
+        }
+      }
+      .res {
+        margin-bottom: 8px;
+        span {
+          display: block;
+          font-size: 14px;
+          margin-bottom: 5px;
+          cursor: pointer;
+        }
+        > textarea {
+          min-width: 300px;
+          color: #36563c;
+        }
+        .delete-icon {
+          height: 30px;
+          margin-left: 12px;
+        }
+      }
+      i {
+        font-size: 9px;
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    .add-btn {
+      background: #6a8372;
+      color: #a8d8b9;
+      width: 130px;
+      height: 40px;
+      border: none;
+      font-size: 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 3px #36563c;
+      img {
+        margin-right: 5px;
+      }
+    }
+  }
+}

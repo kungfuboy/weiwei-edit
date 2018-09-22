@@ -1,0 +1,35 @@
+.content {
+  .selectUser {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+    ul {
+      position: absolute;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      overflow: auto;
+      height: 50vw;
+      width: 50vw;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 30px;
+      color: #a8d8b9;
+      padding: 40px 40px 40px 60px;
+      box-sizing: border-box;
+      li {
+        cursor: pointer;
+        transform: translateX(0);
+        transition: 0.3s all ease;
+        &:hover {
+          border-bottom: 1px solid #a8d8b9;
+          transform: translateX(-5px);
+        }
+      }
+    }
+  }
+}
