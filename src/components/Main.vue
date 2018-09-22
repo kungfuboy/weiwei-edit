@@ -37,22 +37,11 @@
     <transition name="slide-fade">
       <span class="toast" v-if="toastStatus">复制成功</span>
     </transition>
-    <!-- <user-label :changeData="changeData" :status="switchModal"></user-label> -->
-
-    <section class="selectUser" v-show="switchModal" @click="switchModal = false">
-      <ul>
-        <li v-for="(item, key) in selectData" :key="key" @click="hanldeSelect($event, key)">
-          <span>{{item.label}} —— {{item.mark}}</span>
-        </li>
-      </ul>
-    </section>
   </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-// import UserLabel from './UserLabel.vue'
-const userData: any = require('@/user.js').default
 
 const createChatData = () => {
   return {
@@ -63,29 +52,15 @@ const createChatData = () => {
   }
 }
 
-@Component({
-  components: {
-    // UserLabel
-  }
-})
+@Component
 export default class Main extends Vue {
   // @Prop() private msg!: string
   private data: any = {}
   private toastStatus: boolean = false
   private changeData: any = {}
-  private switchModal: boolean = false
-  private selectData: any = {}
 
   private mounted() {
     this.createScenes()
-    this.selectData = Object.assign({}, userData)
-    // this.$on('setUser', (data: any) => {
-    //   this.updateData(data)
-    // })
-    // this.$on('switch-status', () => {
-    //   console.log('kk')
-    //   this.switchModal = false
-    // })
   }
   private createTime() {
     return new Date().valueOf().toString()
@@ -165,28 +140,6 @@ export default class Main extends Vue {
     this.addConversation(null, time, 'req', true)
   }
 
-  private changeUser(e: any, ekey: string, eindex: number) {
-    this.changeData = {
-      x: e.clientX,
-      y: e.clientY,
-      key: ekey,
-      index: eindex,
-      data: this.data
-    }
-    this.switchModal = true
-  }
-
-  private hanldeSelect(e: any, vkey: string): void {
-    e.stopPropagation()
-    const res = this.data
-    const { key, index } = this.changeData
-    const select = this.selectData[vkey]
-    const obj = res[key].res[index]
-    Object.assign(obj, select)
-    this.updateData(res)
-    this.switchModal = false
-  }
-
   private updateData(res: any): void {
     this.data = {}
     this.data = res
@@ -197,7 +150,6 @@ export default class Main extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import '../assets/styles/editList.less';
-@import '../assets/styles/selectUser.less';
 
 @bgColor: #a8d8b9;
 .content {
